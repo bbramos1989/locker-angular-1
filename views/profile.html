@@ -1,0 +1,72 @@
+<section class="content-view">
+	<div class="container">
+		<div class="profile animated fadeIn">
+			<!-- AVATAR PERFIL -->
+			<div class="row">
+				<div class="col">
+					<div class="img-profile">
+						<img ng-src="{{dataUser.avatar}}" class="img-fluid" alt="" ng-src="{{myCroppedImage}}">
+						<div class="icon-edit-photo animated fadeIn" ng-if="showEdit == true"> 
+                           <i class="fa fa-a2 fa-camera icon-photo" aria-hidden="true" ngf-select="upload($file)" style="cursor:pointer"></i>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<!-- AVATAR PERFIL -->
+
+			<!-- FORM INFO USER -->
+			<form name="FormEditProfile" ng-submit="editProfile()">
+				<div class="profile-info">
+					<input class="user-name" type="text" ng-model="dataUser.name">
+						<i class="fa fa-pencil" aria-hidden="true" ng-if="showEdit == true"></i>
+					</input>
+					<div class="info-contact">
+						<p ng-if="showEdit == false">
+							{{dataUser.tel}}
+						</p>					
+						<input type="tel" ng-model="dataUser.tel" ng-class="{editForm:showEdit == true}" ng-if="showEdit == true" maxlength="15" id="phone-profile">
+							<i class="fa fa-pencil" aria-hidden="true" ng-if="showEdit == true"></i>
+						</input>
+						<p class="text-md-center">
+							{{dataUser.email}}
+						</p>
+					</div>
+					<input type="submit" class="btn button-save" value="Salvar" ng-if="showEdit == true"></input>
+					<button class="btn btn-warning btn-edit" ng-click="clickEdit()" ng-if="showEdit == false">Editar</button>
+				</div>
+			</form>
+			<!-- FORM INFO USER -->
+			<div class="profile-photos"></div>
+		</div>
+	</div>
+
+	<!-- MODAL RECORTE DE FOTO -->
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="row">
+	      			<div class="col-sm-10">
+		        		<h5 class="modal-title" id="exampleModalLabel">
+		        			Cortar
+		        		</h5>
+	      			</div>
+	      			<div class="col-sm-2">
+		        		<div class="close" data-dismiss="modal" aria-label="Close">
+		         	 		<i class="fa fa-times" aria-hidden="true"></i>
+		        		</div>
+	      			</div>
+	      		</div>
+	      		<div class="modal-body">
+	        		<ui-cropper image="myImage" result-image="myCroppedImage"></ui-cropper>
+	      		</div>
+	      		<div class="modal-footer">				        		
+	        		<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="editImage()">
+	        			Salvar foto
+	        		</button>
+	      		</div>
+	    	</div>
+		</div>
+	</div>	
+	<!-- MODAL RECORTE DE FOTO -->
+</section>
+

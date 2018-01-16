@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="term">	
+		<div class="row">	
+			<div class="col-md-12">	
+				<h2 class="text-md-center term-title">Novo termo do LockerApp</h2>
+				<p>		
+				<h4> Para continuar usando o Locker, </br>você precisa aceitar o novo termo de uso.</h4></br>
+				<p style="text-align: center"> Para ver o termo: <a href="https://web.lockerapp.com.br/#!/term" target="_blank"><b style="color:red;">Clique Aqui!</b></a></p>
+				</p>
+			</div>    
+		</div>
+		<div class="buttons">					
+			<button class="btn btn-aceito" ng-click="acceptedTerm()">Aceitar Termo</button>				
+		</div>
+		</div>
+	</div>	
+</div>
+<style>	
+	.term{
+		background:white;
+		min-height:300px;
+		padding:20px;
+		position:relative;
+		margin:50px;
+		border-radius:5px;
+		-webkit-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+		-moz-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+		box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+	}
+
+    h4{
+        text-align: center;
+    }
+
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+
+	.term-title{
+		color:#ff531a;
+		font-weight:bold;
+		margin:20px;
+	}
+
+	.buttons{
+		text-align: center;
+		/*bottom:0px;
+		width:100%;
+		padding:10px;*/
+	}
+
+    body{
+        overflow: auto;
+    }
+
+	button{
+		color:white;
+		margin:0 auto;
+	}
+	.btn-aceito{
+		background-color:#ff531a;		
+	}
+</style>

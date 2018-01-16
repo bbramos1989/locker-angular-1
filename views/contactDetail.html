@@ -1,0 +1,32 @@
+<section class="content-view">
+	<div class="container">
+		<div class="profile animated fadeIn">
+
+			<div class="row">
+				<div class="col">
+					<div class="img-profile">
+						<img ng-src="{{contactDetail.avatar}}" class="img-fluid" alt="" ng-src="{{avatar}}">
+					</div>
+				</div><!-- end col -->
+			</div><!-- end row -->		
+
+			<div class="group-info">
+				<h1>{{contactDetail.name}}</h1>	
+				<p>{{contactDetail.phone_number}}</p>
+				<p>{{contactDetail.email}}</p>
+				<!-- <button class="btn init-cv" ng-click="initCv()">Iniciar conversa</button>				 -->
+			</div><!-- end infos-->
+
+			<div class="options-detail">
+				<div class="row">
+					<div class="col">
+						<button class="btn  block-contact" ng-click="blockContact()"><i class="fa fa-2 fa-ban" aria-hidden="true"></i><br><span>Bloquear</span></button>
+					</div>
+					<div class="col">
+						<button class="btn  block-contact" ng-click="removeContact()"><i class="fa fa-2 fa-trash-o" aria-hidden="true"></i><br><span>Excluir</span></button>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>

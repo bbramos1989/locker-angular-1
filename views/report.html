@@ -1,0 +1,21 @@
+<section class="content-view">
+		<div class="box-report">
+			<h3 class="profile">Reportar erro</h3>
+			<form name="formReport" ng-submit="reportAdd()" novalidate>
+				<select name="selectbug" id="selectbug" ng-model="dataReport.bug" required>
+					<option value="">Selecione uma opção</option>
+					<option value="bug">Bug</option>
+					<option value="erro">Erro</option>
+					<option value="melhorias">Melhorias</option>
+					<option value="criticas">Críticas</option>
+				</select>
+				<p ng-show="formReprot.selectbug.$invalid && formReport.selectbug.$touched">Campo obrigatório</p>
+				<div class="message-report">
+                    <label for="username">Mensagem:</label>                                            
+                    <textarea name="textbug" ng-model="dataReport.text" rows="4" cols="50" type="text" required></textarea>
+                    <p ng-hide="formReport.textbug.$valid">Campo obrigatório</p>
+                    <input ng-disabled="formReport.$invalid" class="btn button-report" type="submit" value="Enviar">                   
+                </div>
+			</form>
+		</div>	
+</section>

@@ -1,0 +1,70 @@
+.box-report{
+	margin-top: 20px;
+	text-align:center;
+	h3{
+		margin: 20px;
+		font-size: 20px;
+		text-align: center;
+		color: $color;
+	}
+	form{
+		margin: 0 auto;
+		select{
+			width: 90%;
+			background-color: $bg-menu;
+			padding: 20px;
+			color: #fff;
+			border:none;
+			font-size: 15px;
+			padding: 10px;
+			margin-bottom: 15px;
+			option{
+			font-size: 15px;
+			color: #fff;
+			background-color: $bg-secao;
+			}
+			option:hover,
+			option:focus,
+			option:active,
+			option:checked {
+			  background-color: $color;
+			  color: #000;
+			}
+		}
+	}
+	p{	
+		margin: 5px 0 0px 20px;
+		color: #ff8c00;
+		font-size: 10px;
+		text-align: left;
+	}
+	.message-report{
+		label{
+			    font-size: 15px;
+			    color: #9ab1ca;
+			    float: left;
+			    margin-left: 25px;
+			    /* text-align: left; */
+		}
+		textarea{
+			width: 90%;
+			background-color: $bg-menu;
+			border: none;
+			color: #fff;
+			font-size: 15px;
+		}
+		.button-report{
+			width: 150px;
+			background-color: $color2;
+			border:none;
+			border-radius: 3px;
+			height: 35px;
+			margin-top: 20px;
+			color: #fff;
+			cursor: pointer;
+			&:hover{
+				background-color: $color;
+			}
+		}
+	}
+}

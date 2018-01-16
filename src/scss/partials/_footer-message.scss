@@ -1,0 +1,151 @@
+footer{
+	position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.footer{
+	background-color: #fff;
+    border-top: 1px solid #dde1e3;
+    padding: 10px 0;
+	textarea{
+		width: 100%;
+		padding: 10px;
+		resize: none;     
+		max-height: 130px;
+		font-size: 14px;
+		margin: 2px auto;
+		display: block;
+		background-color: #f8f8f8;
+		border-radius: 10px;
+		border: none;
+		outline: none;
+		box-sizing: border-box;
+		overflow: hidden;
+		transition: height 0.01s ease 0.01s;
+		position: relative;
+		top: 4px;
+	}
+	textarea#textarea::-webkit-scrollbar {
+		background: rgba(0,0,0,0.1);
+		width: 5px;
+	}
+	textarea#textarea::-webkit-scrollbar-thumb {
+	    background: $color;
+	}
+	input[type=text]{outline:none}
+	i{
+	    color: #ff531a;
+	    cursor: pointer;
+	    font-size: 1.5em;
+	}
+	.icon-send,
+	.icon-mic,
+	.box-record-audio,
+	.icons-chat{
+		text-align:center;	
+	}
+	.box-icon{
+		display: inline-block;
+		padding: 0 10px;
+	}
+	.icon-cancel,
+	.icon-record,
+	.icon-check{
+		padding: 0;
+	}
+	.icon-cancel,
+	.icon-check{
+		transition: font-size 0.2s;
+	}
+	.icon-cancel:hover,
+	.icon-check:hover{
+		font-size: 2em;
+	}
+	.icon-record{
+		font-size: 16px;
+
+	}
+	.icon-check{
+		color: #33cd5f;  
+	}
+	.box-anexo,
+	.box-camera,
+	.box-text,
+	.box-icons,
+	.box-timer{
+		display: inline-block;
+		padding: 0;
+		transition: width 0.2s;
+	}
+	.box-anexo,
+	.box-icons,
+	.box-timer{
+		width: 5%;
+		text-align: center;
+		position: relative;
+		/*top: -10px;
+		left: 2px;*/
+		transition: width 0.2s;
+	}
+	.box-text{
+		position: relative;
+		width: 86%;
+		transition: width 0.2s;
+	}
+	.new-box-text{
+		position: relative;
+		display: inline-block;
+		padding: 0;
+		width: 63%;
+	}
+	.new-box-timer{
+		display: inline-block;
+		padding: 0;
+		width: 30%;
+		text-align: center;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+}
+
+@media (max-width: 900px) 
+{	
+	.footer{
+		i{
+			padding: 32%;
+		}
+	}
+}
+@media (min-width: 1035px){
+	.footer .box-text {    
+    	width: 87%;
+	}
+}
+@media ( max-width: 1230px){
+	.new-box-text{
+		width: 60%;
+	}
+	.new-box-timer{
+	    font-size: 12px;
+	}
+}
+@media (max-width: 1175px) 
+{	
+	.footer .box-icon {
+       	padding: 0 6px;
+	}
+	.new-box-timer{
+	    font-size: 11px;
+	}
+	.footer{
+		i{
+			padding: 25%;
+		}
+	}
+}
+@media (min-width: 1700px){
+	.footer .box-text {    
+    	width: 89%;
+	}
+}

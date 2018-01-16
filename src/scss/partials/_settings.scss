@@ -1,0 +1,22 @@
+.list-settings {
+	margin-left: 10px;
+    margin-top: 25px;
+}
+.list-settings > li {
+	border: none;
+	background-color:$bg-secao;
+	font-size: 13px;
+    letter-spacing: 0.5px;
+	a:hover{
+		color:$color!important;
+	}
+	a{	
+		font-size: 14px;
+		cursor: pointer;
+	}
+	i{
+		color: $color;
+		font-size: 22px;
+		padding: 7px 30px 10px 0;
+	}
+}

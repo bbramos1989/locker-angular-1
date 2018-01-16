@@ -1,0 +1,188 @@
+<section class="content-view">
+	<div class="container pb-70">
+		<div class="profile">
+			<form ng-submit="editGroup()" name="formEditGroup">
+				<!-- AVATAR -->
+				<div class="row">
+					<div class="col">
+						<div class="img-profile">
+							<img ng-src="{{channelDetail.avatar}}" class="img-fluid" alt=""  ng-src="{{myCroppedImage}}">
+							<div class="icon-edit-photo animated fadeIn" ng-if="showEdit == true" title="Trocar Imagem"> 
+	                           <i class="fa fa-a2 fa-camera icon-photo" ngf-select="uploadGroup($file)" aria-hidden="true"></i>
+	                        </div>
+						</div>
+					</div>
+				</div>	
+				
+				<!-- NAME AND PARTICIPS IN GROUP -->
+				<div class="group-info">
+					<h1 ng-if="showEdit == false">{{channelDetail.name}}</h1>
+					<p ng-if="txtTimerExpiration !== 'disabled'">
+						Tempo de expiração de mensagens: {{txtTimerExpiration}}.<!--  teste aqui  -->
+					</p>
+					<input type="text" ng-model="channelDetail.name" ng-if="showEdit == true"><i class="fa fa-pencil" aria-hidden="true" ng-if="showEdit == true"></i>			
+				</div>
+
+				<!-- BUTTONS GROUP -->
+				<div class="buttons" ng-if="channelDetail.type_chat == 'group' && isAdmin == true">
+					<div class="row">
+						<div class="col-md-3 no-pading text-md-center " title="Editar Grupo">
+							<button type="button" class="btn btn-tamanho" ng-click="clickEditGroup()" ng-if="showEdit == false">
+								<!--Editar Grupo-->
+								<i class="fa fa-pencil" aria-hidden="true"></i>	
+							</button>
+						</div>
+						<div class="col-md-3 no-pading text-md-center" title="Adicionar Membro">
+							<button type="button" class="btn btn-tamanho" ng-click="addParticipant()">
+								<!--Adicionar membro-->
+								<i class="fa fa-plus-circle" aria-hidden="true"></i>
+							</button>						
+						</div>
+						<div class="col-md-3 no-pading text-md-center" title="Tempo de Expiração">
+							<button type="button" class="btn btn-tamanho" ng-click="openModalTime()">
+								<!-- Tempo de mensagens -->
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</button>
+						</div>
+						<div class="col-md-3 no-pading text-md-center" title="Sair do Grupo">
+							<button type="button" class="btn btn-tamanho" ng-click="exitChannel()">
+								<!-- Sair do grupo -->
+								<i class="fa fa-sign-out" aria-hidden="true"></i>
+							</button>						
+						</div>
+						<div class="col-md-3 no-pading text-md-center btn-enviar-group animated fadeIn" ng-if="showEdit == true">
+							<!--Salvar -->
+							<i class="fa fa-check" aria-hidden="true"></i>
+							<input type="submit" value="" ng-if="showEdit == true"></input>
+						</div>
+					</div>
+				</div>
+				<!-- BUTTONS GROUP -->
+
+				<!-- BUTTONS GROUP NOT ADMIN -->
+				<div class="buttons" ng-if="channelDetail.type_chat == 'group' && isAdmin == false">
+					<div class="row">
+					<!--<div class="col-md-6 no-pading text-md-center" title="Tempo de Expiração">
+							<button type="button" class="btn btn-tamanho" ng-click="openModalTime()">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</button>
+						</div> -->
+						<div class="col-md-12 no-pading text-md-center" title="Sair do Grupo">
+							<button type="button" class="btn btn-tamanho" ng-click="exitChannel()">
+								<!-- <p>Sair do grupo</p> -->
+								<i class="fa fa-sign-out" aria-hidden="true"></i>
+							</button>						
+						</div>
+					</div>
+				</div>
+				<!-- BUTTONS GROUP NOT ADMIN -->
+
+				<!-- BUTTONS DOUBLE -->
+				<div class="buttons" ng-if="channelDetail.type_chat == 'double'">
+					<div class="row">
+						<div ng-if="isAdmin" class="col-md-12 no-pading text-md-center" title="Tempo de Expiração">
+							<button type="button" class="btn btn-tamanho" ng-click="openModalTime()">
+								<!-- <p>Tempo de mensagens</p> -->
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- BUTTONS DOUBLE -->
+				
+				<!-- CONFIG TIMER EXPIRATION -->
+				<div class="row"> 
+					<!-- ng-repeat="participant in listParticipants" ng-if="participant.id == me.id && participant.admin == 1" -->
+					<div id="modal-time">
+						<p>Escolha um tempo para expirar as mensagens.</p> 
+						<select ng-model="selectedTime" ng-options="times.label for times in time">
+							<option value="">Selecione um tempo</option>
+						</select>  		
+						<button class="btn-save-timer" type="button" ng-click="editTimeToExpiration(selectedTime)">
+							Salvar			
+						</button>
+					</div>
+				</div>
+
+				<!-- LIST PARTICIPANTS GROUP -->
+				<div class="list-participe">
+					<!-- NG REPEAT PARTICIPANTS -->
+					<div class="row infos wrapper" ng-repeat="participant in listParticipants">	
+						<div class="col-xl-2 text-center no-pading">
+							<div class="img-contact">
+								<img ng-src="{{participant.avatar}}" class="img-fluid">
+							</div>
+						</div>
+						<div class="col-xl-8">
+							<div class="info-participant">
+							<p>{{participant.name}}</p>
+							<p class="admin-group" ng-if="participant.admin == 1">Admin</p>
+							</div>
+						</div>
+						<div class="col-xl-2 no-pading">
+							<div class="option-contact" ng-click="openOptionParticipant(participant.id)" ng-if="channelDetail.type_chat == 'group' && participant.admin == false && isAdmin == true">
+								<i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+							</div>
+						</div>
+						<!-- OPTION ADD E REMOVE PARTCIPANT -->
+						<div class="option-contacts animated fadeInRight" ng-if="slide == participant.id">
+							<div class="box-option">
+								<div class="btn-delete" ng-click="removeParticipant(participant)">
+									<p>Excluir</p>
+								</div>
+								<div class="btn-admin" ng-click="addAdmin(participant)">
+									<p>Tornar admin</p>
+								</div>
+							</div>
+						</div>
+						<!-- OPTION ADD E REMOVE PARTCIPANT -->	
+					</div>
+				</div>
+
+				
+				<!-- Modal add new Admin -->
+			    <div id="modalNewAdmin" class="modal" role="dialog">
+			        <div class="modal-dialog">
+			            <!-- Modal content-->
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+			                    <h4 class="modal-title">Escolha o novo admin</h4>
+			                </div>
+			                <div class="modal-body">
+			                    <select ng-model="selectedAdmin" class="form-control" ng-options="x.name for x in admins">
+			                    </select>
+			                </div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-success" ng-click="choiceNewAdmin(selectedAdmin)">Salvar</button>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    <!-- Modal add new Admin -->
+			</form>		
+		</div>
+	</div>
+
+	<!-- MODAL RECORTE FOTO -->
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="exampleModalLabel">Recorte sua imagem</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	         	 		<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+	      		<div class="modal-body">
+	        		<ui-cropper image="myImage" result-image="myCroppedImage"></ui-cropper>
+	      		</div>
+	      		<div class="modal-footer">				        		
+	        		<button type="button" class="btn" data-dismiss="modal" ng-click="editImageGroup()">Salvar foto</button>
+	      		</div>
+	    	</div>
+  		</div>
+	</div>
+	<!-- FIM MODAL RECORTE FOTO -->	
+</section>
+

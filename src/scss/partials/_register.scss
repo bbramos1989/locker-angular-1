@@ -1,0 +1,137 @@
+.register{	
+	margin:0 auto;
+	color: #fff;
+	.img-edit{
+		width: 150px;
+		margin:0 auto;
+		> .img{
+			border-radius:50%;
+			border:solid 8px $bg-menu;	
+		}		
+		.icon-edit-photo{
+			cursor: pointer;
+			width: 25px;
+		    height: 25px;
+		    background-color: #33a8df;
+		    border-radius: 50%;
+		    position: relative;
+		    bottom: 40px;
+		    left: 120px;
+			.icon-photo{
+				font-size: 14px;
+    			line-height: 27px;
+			    color: #29323b;			
+			}
+		}
+	}
+	h2{
+		@include h2Default ;
+	    padding-top: 20px;
+	    
+	}
+	.form-group{
+		text-align: left;
+		color:#9ab1ca; 
+		font-size: 15px;
+		width: 500px;
+		margin: 0 auto;
+	}
+	input{		
+		@include inputDefault;
+		background-color: #3a4450;
+		color: #fff;
+	}
+	input.button-register{
+		@include button;
+		&:hover {
+			background-color:#1572a0;
+		}
+
+	}
+	input.button-cancel{
+		width:110px;
+	    border:none;
+	    border-radius: 5px;
+	    background-color: $color; 
+ 		margin: 40px 10px 60px 0;
+	    color: #fff;
+	    text-transform: uppercase;
+	    font-size: 15px;
+	    padding: 10px;
+	    cursor: pointer;
+	    &:hover{
+	         background-color:#c0370e;
+	    }
+    }
+	
+	// MODAL
+	h5.modal-title{
+		color:$color;
+		font-size: 28px;
+    	margin-left: 83px;
+	}
+	.error{
+	color: #FF8C00;
+	display:inline;
+    font-size: 10px;
+    padding-left: 24px; 
+    position:relative;
+    left:376px;
+    top:-35px;
+    /* clear: both; */
+    margin-right: 24px;
+}
+}
+//SCROLL
+.container.text-md-center::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}   
+
+.no-scroll::-webkit-scrollbar {display:none;} /* Safari */
+.no-scroll::-moz-scrollbars {display:none;}
+.no-scroll::-o-scrollbar {display:none;} /* opera */
+.no-scroll::-google-ms-scrollbar {display:none;}
+.no-scroll::-khtml-scrollbar {display:none;}
+
+@media (max-height:800px){
+	.register .img-edit {
+		width: 100px;
+    	margin: 0 auto;
+	}
+	.register .img-edit .icon-edit-photo {
+	    width: 20px;
+	    height: 20px;
+	    bottom: 36px;
+	    left: 78px;
+	}
+	.register .img-edit .icon-edit-photo .icon-photo {
+	    font-size: 12px;
+	    padding: 4px;
+	}
+	.register .form-group {
+	    font-size: 12px;
+	}
+	.register input {
+    	height: 25px;
+    }
+    .register input.button-cancel {
+	    margin: 10px 10px 60px 0;
+	    font-size: 12px;
+	    padding: 0px;
+	}
+	.register input.button-register {
+	    margin: 10px 0 60px 10px;
+	    font-size: 12px;
+	    padding: 0;
+	}
+	.register h2{
+		font-size: 25px;
+	}
+}
+@media (max-height:800px){
+	.register{
+		height: 600px;
+	}
+}
+

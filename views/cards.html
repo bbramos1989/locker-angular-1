@@ -1,0 +1,65 @@
+<section class="content-view">	
+	<div class="container">
+		<div class="row">
+			<div class="search-box">				
+				<input type="text" class="search-style" placeholder="Pesquisar" ng-model="search">	
+			</div>	
+		</div>
+		
+		<!-- MENU ALL AND GROUP -->
+		<div class="list-all row">
+			<div class="col-md-4 icons-list"  id="Todos" ng-class="{'filter-active':controls.filters == 'todos'}" ng-click="filterType('todos')" id="exemplo01" title="Todos">
+				<i class="fa fa-comments" aria-hidden="true"></i>
+			</div>
+			<div class="col-md-4 icons-list" id="Conversas" ng-click="filterType('conversas')" ng-class="{'filter-active':controls.filters == 'conversas'}" title="Conversas">
+				<i class="fa fa-commenting" aria-hidden="true"></i>				
+			</div>
+			<div class="col-md-4 icons-list" id="grupo" ng-click="filterType('grupo')" ng-class="{'filter-active':controls.filters == 'grupo'}" title="Grupos">
+				<i class="fa fa-users" aria-hidden="true"></i>
+			</div>
+		</div>
+		<!-- MENU ALL AND GROUP -->
+		
+		<!-- ADD NEW GROUP -->
+		<div class="row button-group" ng-if="controls.filters == 'grupo'">
+			<div class="col-md-12">
+				<button class="btn" ng-click="createGroup()">Criar grupo</button>
+			</div>
+		</div>
+		<!-- ADD NEW GROUP -->
+
+		<!-- LIST-CHANNEL -->								
+		<div class="list" ng-repeat="channel in channelsList | filter:search" ng-click="clickChannel(channel)">
+			<a class="click-list row">
+				<div class="col-md-2 no-pading">
+					<div class="img-profile">
+						<img ng-src="{{channel.avatar}}" class="img-fluid img-avatar">
+					</div>
+				</div>
+				<div class="col-md-7 wrapper">
+					<div class="text-list">
+						<h3>{{channel.name}}</h3>
+						<p class="lasted">{{channel.last_message.message}}</p>
+					</div>						
+				</div>
+				<div class="col-md-2 wrapper">
+					<div class="notification" ng-show="channel.undelivered_messages > 0">
+						<span>
+							<p>{{channel.undelivered_messages}}</p>
+						</span>	
+					</div>
+				</div>
+				<div class="col-md-1 wrapper">
+					<div class="info-list">
+						<!-- <p class="first-hour">
+							18:20
+						</p> -->
+						<span class="icon-block" ng-if="channel.isSecret">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+				</div>
+			</a>
+		</div>		
+	</div>	
+</section>

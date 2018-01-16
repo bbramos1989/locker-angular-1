@@ -1,0 +1,121 @@
+.profile{
+	font-family: 'artegrasans-regularregular';
+	text-align:center;
+	.img-profile{
+		width:100%;
+		max-width:220px;
+		height:auto;
+		padding:15px;
+		margin:0 auto;		
+		> img {
+			border-radius: 100%;
+			width: 170px;
+			height: 170px;
+			margin: 35px 0 0 0;
+			border: 10px solid #29323b;
+		}
+		.icon-edit-photo{
+			width: 30px;
+			height: 30px;
+			background-color: $color2;
+			border-radius: 50%;
+			position: relative;
+			bottom: 50px;
+    		left: 145px;
+    		cursor: pointer;
+			.icon-photo{
+  				line-height: 31px;
+				color:$bg-menu;				
+			}
+		}
+	}
+	.profile-info{
+		input{
+			background-color: #2f3841;
+			color: #9dbbdb;
+		    font-weight: 700;
+		    letter-spacing: .5px;
+			width:250px;
+			border: none;
+			text-align: center;
+		}
+		.user-name{
+			font-size: 20px;
+		    color: #ff531a;
+		    text-transform: capitalize;
+		    font-weight: 700;
+			font-family: 'artegrasans-regularregular';
+		}
+
+		h2{
+			color:$color;
+
+		}		
+		i{ 
+			color: #536573;
+			font-size: 15px;
+		}
+		
+	}	
+	
+	.info-contact{
+		margin: 25px 0 40px 0;
+		p{
+			color: #9dbbdb;
+		    font-size: 15px;
+		    font-weight: 700;
+		    letter-spacing: .5px;
+		}
+		input{
+			font-size:15px;
+		}
+
+	}
+	input.button-save{
+		background:$color2;
+		border:none;
+		cursor:pointer;
+		width: 80px;
+		color: #fff;
+		font-weight: normal;
+		
+	}	
+	.btn-edit{
+		background:$color;
+		border:none;
+		cursor:pointer;
+	}
+
+	.buttons-profile{
+		button{
+			background-color:$bg-menu;
+			margin: 10px;
+			color: #536573;
+			border-radius: 20px;
+			width: 130px; 
+			i{
+			font-size: 40px;
+			color: $color;
+			}	
+		}		 		
+	}
+}
+@media (max-width:950px){
+	.profile .img-profile>img {
+		width: 130px;
+    	height: 130px;
+	}
+	.profile{
+		input{
+			text-align:left!important;			
+		}
+		p{
+			font-size:15px!important;
+		}
+		.img-profile{
+			.icon-edit-photo{
+				left:100px!important;
+			}
+		}
+	}
+}

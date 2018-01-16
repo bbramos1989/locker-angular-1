@@ -1,0 +1,230 @@
+modal-title.content-view{
+	// font-family: $font-antipasto;
+}
+.search-box{
+	padding: 13px 20px;
+	margin-top: 12px;
+	width: 100%;
+	input[type=text]{outline:none}
+		input.search-style {
+		    height: 30px;
+		    width:100%;
+		    border-radius: 15px;
+		    text-align: center;	  
+		    background-color: $bg-menu;
+		    border: 0px;
+		    color: #75808d;
+		    font-size: 13px;
+		}
+	input::placeholder{
+		color: #566578;
+		font-weight: bold;
+	}
+// 	input:focus{
+//		border: solid 1px $color2;		
+// 	}
+}
+
+// BADGE
+.view-block{
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: normal;
+    padding: 7px;
+    font-size: 15px;
+    margin: 5px;
+    cursor:pointer;
+}
+.block{
+	position: absolute;
+	color: $color;
+    padding: 20px 8px;
+    font-size: 20px;
+
+}
+// LIST CONTACTS ONLY ADD CONTACTS
+a.click-list.add-contact{
+	background-color: #4c555f;
+	cursor: pointer;
+	margin-top: 16px;
+	h3{
+		color: #fff;
+		font-size: 16px;
+		font-weight: normal;
+	}
+	img{
+		border-color: #5e646a;
+	}
+}
+
+.list.ng-scope {
+    cursor: pointer;
+}
+
+// MODAL ADD CONTACTS
+.modal-fullscreen .modal-content { 
+  border:none; 
+}
+
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: $bg-menu;
+  opacity: 1!important;
+}
+.modal-content {
+    background-color: #29323b;
+}
+.modal .modal-title{
+	text-transform: uppercase;
+	font-size: 20px;
+}
+.modal .modal-title,
+.modal .close{
+	color:$color;
+}
+
+.close{
+	text-shadow: none;
+}
+
+button.close span.close-add-contact {
+    font-size: 40px;
+    border: 1px solid #ff531a;
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 50%;
+}
+
+// BOX SEARCH MENU
+.modal .modal-input{
+	width: 100%;
+	height: 41px;
+	border-radius: 3px;
+	font-size: 18px;
+	border:none;
+	padding: 8px;
+	background-color: #3a4450;
+    color: #fff;
+ }
+
+.modal-body i{
+/*	width: 10%;*/
+/*	height: 41px;*/
+/*	padding: 7px;
+	background-color: #3a4450;*/
+/*	border-radius: 0 5px 5px 0;*/
+	position: absolute;
+	font-size: 22px;
+	color: #fff;
+    right: 30px;
+    top: 23px;
+}
+.modal-header {
+    padding: 40px 20px 10px;
+    border:none;
+}
+// BOX SEARCH MENU
+
+// LIST CONTACTS MODAL
+
+// .modal a.click-list{	
+// 	border-bottom: 1px solid #ededed;
+// }
+.modal-add .img-profile{
+	max-width: 60px;
+    max-height: 60px;
+    border-style: none;
+    border-radius: 50%;
+    margin-left:20px;
+    cursor: pointer;
+}
+a.click-list.modal-list{	
+	// color:black!important;
+	&:hover{
+		background-color: #303840;
+		cursor:pointer;		
+	}
+	// .img-avatar{
+	// 	border:none!important;
+	// }
+}
+// LIST CONTACTS MODAL
+
+.active-add-group{
+	background-color: #262f38!important;
+	img{
+		border:3px solid $color!important;
+		border-radius: 50%;
+	}
+}
+
+.selected{
+	p{
+		font-size: 14px;
+    	letter-spacing: 0.2px;
+		color: $color;
+		text-align: center;
+		padding: 10px;
+	}
+	i{
+		margin-left: 10px;
+	}
+}
+.create-group{
+	cursor: pointer;
+	background-color: $bg-menu;
+	p{
+		font-size: 15px;
+		color: $color;
+		text-align: center;
+		padding: 10px;
+		&:hover{
+		color: #fff;
+		}
+	}
+	&:hover{
+		background-color: $color;
+		color: #fff;
+	}
+}
+.img-group {
+    width: 200px;
+    height: 200px;
+    max-width: 220px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #2f3841;
+    margin-bottom: 50px;
+}
+.icon-edit-photo {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: #33a8df;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 34px;
+    right: 30%;
+    bottom: 28%;
+    cursor: pointer;
+}
+
+@media (max-width:1500px){
+	a.click-list .text-list h3 {
+    	font-size: 13px;
+	}
+	a.click-list .text-list {
+    	padding: 19px 0 20px 15px;
+	}
+}
+@media (max-width:1300px){
+	a.click-list .text-list h3 {
+    	font-size: 12px;
+	}
+	a.click-list .text-list {
+    	padding: 17px 0 20px 15px;
+	}
+}
+

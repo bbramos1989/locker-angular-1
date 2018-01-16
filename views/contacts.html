@@ -1,0 +1,135 @@
+<section class="content-view">	
+	<div class="container">
+		<div class="sub-container">
+			<div class="row">			
+				<div class="col-md-12">
+					<div class="search-box">				
+						<input type="text" class="search-style" placeholder="Pesquisar" ng-model="search">
+					</div>	
+				</div>
+			</div>
+
+			<!-- LIST-contacts Add -->	
+			<div class="list" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" ng-click="openAddContact()" ng-if="!params.addGroup && !params.addParticipe">
+				<a class="click-list add-contact row">
+					<div class="col-md-2 no-pading">
+						<div class="img-profile">
+							<img src="../assets/img/avatar2.png" alt="" class="img-fluid img-avatar">
+						</div>
+					</div>
+					<div class="col-md-8 wrapper">
+						<div class="text-list">
+							<h3 class="add-contact">Adicionar Contato</h3>
+						</div>						
+					</div>
+					<div class="col-md-2 no-pading"></div>
+				</a>
+			</div>
+
+			<div ng-if="(params.addGroup || params.addParticipe)" class="selected">
+				<p id="createGroup">Selecione os participantes</p>
+			</div>
+			<div ng-if="(params.addGroup || params.addParticipe) && createGroup == true" class="create-group" ng-click="create()">
+				<p id="#createNew">Criar Grupo</p>
+			</div>
+			<div ng-if="(params.addGroup || params.addParticipe) && addParticipe == true" class="create-group" ng-click="create()">
+				<p id="#createNew">Adicionar Participante</p>
+			</div> 	
+			<!-- LIST-contacts Add -->
+		</div>
+
+		<!-- AVATAR -->
+		<div class="row" ng-if="createGroupStatus">
+			<div class="col">
+				<div class="img-group">
+					<img ng-src="{{avatarGroup}}" class="img-fluid" alt=""  ng-src="{{myCroppedImage}}">
+					<div class="icon-edit-photo animated fadeIn" title="Trocar Imagem"> 
+	                   <i class="fa fa-a2 fa-camera icon-photo" ngf-select="uploadGroup($file)" aria-hidden="true"></i>
+	                </div>
+				</div>
+			</div>
+		</div>	
+
+
+		<!-- List contacts-->	
+		<div class="list cursor" ng-repeat="contact in contacts |  filter:search | orderBy:order" id="click-list">
+			<a class="click-list row" ng-click="clickContact(contact)" ng-class="{'active-add-group':contact.selected == true}"> <!-- ng-click="getMessages(channel)" ng-class="{'active':navColor == 'contact'}" -->
+				<div class="col-md-2 no-pading">
+					<div class="img-profile">
+						<img ng-src="{{contact.contact.avatar}}" alt="" class="img-fluid img-avatar">
+					</div>
+				</div>
+				<div class="col-md-8 wrapper">
+					<div class="text-list">
+						<h3>{{contact.contact.name}}</h3>
+						<!-- <p>{{contact.contact.status}}</p> -->
+					</div>						
+				</div>
+				<div class="col-md-2">
+					<span class="badge block" ng-if="contact.contact.blocked == true">
+						<i class="fa fa-ban" aria-hidden="true"></i>
+					</span>
+				</div>
+			</a>
+		</div>		
+	</div>
+	<!-- List contacts -->		
+
+	<!-- Modal for Add-->
+		<div class="modal modal-fullscreen animated fadeIn" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog" role="document">
+		      	<div class="modal-content">
+		       		<div class="modal-header">
+		        		<h3 class="modal-title" id="exampleModalLabel">Adicionar Contato</h3>
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModal()">
+		          		<span class="close-add-contact" aria-hidden="true">&times;</span>
+		       			</button>
+		     		</div>
+		      		<div class="modal-body">
+		      			<input type="text" class="modal-input" placeholder="Digite o nome do contato" ng-keyup="searchContacts(formSearch)" ng-model="formSearch">
+		      			<i class="fa fa-2 fa-search" aria-hidden="true"></i>
+		      		</div>		      
+	      			<div class="modal-add">			
+						<div class="list" ng-repeat="list in listSearch">
+							<a class="click-list modal-list row" ng-click="addContact(list)">
+								<div class="col-md-2 no-pading">
+									<div class="img-profile">
+										<img ng-src="{{list.avatar}}" alt="" class="img-fluid img-avatar">
+									</div>
+								</div>
+								<div class="col-md-8 no-pading">
+									<div class="text-list">
+										<h3>{{list.name}}</h3>
+									</div>						
+								</div>
+							</a>
+						</div>
+					</div>			      
+			      	<div class="modal-footer">
+			     	</div>
+		    	</div>
+		  	</div>
+		</div>		
+	<!-- Modal for Add-->
+
+	<!-- MODAL RECORTE FOTO -->
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="exampleModalLabel">Recorte sua imagem</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	         	 		<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+	      		<div class="modal-body">
+	        		<ui-cropper image="myImage" result-image="myCroppedImage"></ui-cropper>
+	      		</div>
+	      		<div class="modal-footer">				        		
+	        		<button type="button" class="btn" data-dismiss="modal" ng-click="editImageGroup()">Salvar foto</button>
+	      		</div>
+	    	</div>
+  		</div>
+	</div>
+	<!-- FIM MODAL RECORTE FOTO -->	
+</section>

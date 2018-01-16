@@ -1,0 +1,28 @@
+.nav {
+    list-style: none;   
+    height: 832px;
+    color:#fff;
+    background-color:$bg-menu;
+    .avatar-item{
+    	margin: 20px 0 20px 0px;
+    	.avatar{
+    		border-radius:100%;
+            border: 5px solid #2f3841;
+            cursor: pointer;
+    	}
+    }
+    li{
+    	padding: 15px 0;
+    	text-align:center;    	
+    	&:hover{
+    		background-color: $bg-secao;
+    		cursor:pointer;
+    	}
+    }       	      
+}
+
+.active{
+    background-color: $bg-secao;
+   }  
+
+

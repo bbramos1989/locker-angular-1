@@ -1,0 +1,62 @@
+//----------------------------------*\
+// SCSS MIXINS
+@import 'mixins/_position.scss';
+//----------------------------------*/
+
+// ---------------------------------*\
+// VARIAVEIS 
+@import 'variables/_variables.scss';
+
+//-----------------------------------*/
+
+//----------------------------------*/
+// BOOTSTRAP
+@import '../componentes/bootstrap/scss/bootstrap.scss';
+
+//----------------------------------*/
+
+//----------------------------------*\
+// PAGES
+@import 'partials/_nav.scss';
+@import 'partials/_channels.scss';
+@import 'partials/_main.scss';
+@import 'partials/_messages.scss';
+@import 'partials/_footer-message.scss';
+@import 'partials/_settings.scss';
+@import 'partials/_profile.scss';
+@import 'partials/_login.scss';
+@import 'partials/_register.scss';
+@import 'partials/_appdownload.scss';
+@import 'partials/_contacts.scss';
+@import 'partials/_group.scss';
+@import 'partials/_detail.scss';
+@import 'partials/_load.scss';
+@import 'partials/resetpassword.scss';
+@import 'partials/_report.scss';
+@import 'partials/_recoverPassword.scss';
+@import 'partials/_newpassword.scss';
+@import 'partials/_confirmUser.scss';
+
+//----------------------------------*/
+
+//Default reset
+.container {
+	//width: 1600px!important;
+	position: relative;
+}
+
+a{
+	color: #fff!important;
+	text-decoration: none!important;
+}
+
+//TYPOGRAPH 
+body,html{
+	// background-color: #4b5a6b;
+	background-color: #2f3841;
+	font-family: 'artegrasans-regularregular';
+	overflow: hidden;
+	
+	}
+
+html { overflow: -moz-scrollbars-none; }

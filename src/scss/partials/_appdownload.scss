@@ -1,0 +1,35 @@
+.box-download{
+	text-align:center;
+	margin-top:50px;		
+	h2{
+		color: #fff;		
+		font-weight: normal;
+	}
+	p{
+		font-weight: bold;		
+		color:$color;
+		text-transform: uppercase;;
+		font-size: 30px;
+		color:#b4e87a;
+	}	
+	.box-icons{
+		margin:20px 0px;
+		.apple,.android{
+			width:100px;
+			margin:0 auto;
+			text-align:center;
+			p{
+				font-size:17px;
+			}								
+		}
+	}
+
+	.logo-footer{
+		text-align:center;
+		padding:25px;
+		margin:0 auto;
+		width:100%;
+		max-width:250px;
+	}
+	
+}

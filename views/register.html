@@ -1,0 +1,97 @@
+<section class="height-login">
+	<div class="container text-md-center no-scroll">
+		<div class="register">
+			<h2>Criar Conta</h2>
+			<form class="form-register" name="formRegister" ng-submit="registerForm()">
+		
+                <div class="img-pofile">                 
+                    <div class="img-edit">
+                        <img src="../assets/img/contact-default.png" name="avatar" class="img-fluid img" ng-src="{{myCroppedImage}}">
+                        <div class="icon-edit-photo"> 
+                           <i class="fa fa-a2 fa-camera icon-photo" ngf-select="upload($file)" aria-hidden="true" required="required"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+				<!-- <button type="button" class="btn btn-primary" id="openmodal" data-toggle="modal" data-target="#myModal">
+				  Launch demo modal
+				</button> -->
+
+    			<!-- Modal -->
+				<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+				    	<div class="modal-content">
+				      		<div class="modal-header">
+				        		<h5 class="modal-title" id="exampleModalLabel">Recorte sua imagem</h5>
+				        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				         	 		<span aria-hidden="true">&times;</span>
+				        		</button>
+				      		</div>
+				      		<div class="modal-body">
+				        		<ui-cropper image="myImage" result-image="myCroppedImage"></ui-cropper>
+				      		</div>
+				      		<div class="modal-footer">				        		
+				        		<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="sendImage()">Salvar foto</button>
+				      		</div>
+				    	</div>
+				  	</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="username" >Username:</label>					
+					<input type="text" name="username" ng-model="dataRegister.username" required  input-restrictor title="Caracteres válidos { letras minúsculas, ponto e números }" maxlength="250">
+					<!-- pattern="[a-zA-Z\sà-ùÀ-Ù]{1,10}"-->
+					<p class="error" ng-show="formRegister.username.$touched && formRegister.username.$invalid">Campo Obrigatório!</p>
+				</div>
+				
+				<div class="form-group">
+					<label for="name">Nome:</label>
+					<input name="name" type="text" ng-model="dataRegister.name" required>
+					<p class="error" ng-show="formRegister.name.$touched && formRegister.name.$invalid">Campo Obrigatório!</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">E-mail:</label>
+					<input type="email" name="email" ng-model="dataRegister.email" required>
+					<p class="error" ng-show="formRegister.email.$touched && formRegister.email.$invalid">Email invalido!</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">Confirme seu e-mail:</label>
+					<input type="email" name="conf_email" ng-model="dataRegister.conf_email">
+					<p class="error" ng-show="dataRegister.email !== dataRegister.conf_email">Email não confere</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">Senha:</label>
+						<input type="password" name="password" ng-model="dataRegister.password" required>
+						<p class="error" ng-show="formRegister.password.$touched && formRegister.password.$invalid">Campo Obrigatório!</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">Confirme sua senha:</label>
+					<input type="password" name="conf_password" ng-model="dataRegister.conf_password" required>
+					<p class="error" ng-show="dataRegister.conf_password !== dataRegister.password">Senha não confere</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">Data de nascimento:</label>
+						<input type="text" class="date" id="date-register" name="date_register" ng-model="dataRegister.date_register" >
+						<p class="error" ng-show="formRegister.date-register.$touched && formRegister.date-register.$invalid">Campo Obrigatório!</p>
+				</div>
+
+				<div class="form-group">
+					<label for="">Celular:</label>
+						<input type="tel" class="telefone" id="phone_number" name="phone_number" ng-model="dataRegister.phone_number" required placeholder="(99)99999-9999">
+						<p class="error" ng-show="formRegister.phone_number.$touched && formRegister.phone_number.$invalid">Campo Obrigatório!</p>
+				</div>
+
+				<div class="button">
+                    <input type="submit" class="btn button button-register" value="Enviar"></input>
+                    <input type="submit" class="btn button-cancel" value="Cancelar" ng-disabled="" ui-sref="login"></input>
+                </div>
+			</form>
+		</div>
+	</div>
+</section>
+

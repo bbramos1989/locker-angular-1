@@ -1,0 +1,317 @@
+<link rel="stylesheet" href="src/componentes/jquery-emojiarea-master/jquery.emojiarea.css">
+<section id="viewMessage" class="content-messages">
+	<div class="img-default animated fadeIn" ng-if="currentId == 0">
+		<img class="img-fluid" src="assets/img/msg-default.png">
+	</div>
+	<!-- header messages -->
+	<div class="top-bar-message">	
+		<div class="row">  
+			<!-- info message -->
+			<div class="col-md-7">
+				<div class="img-contact" ng-click="infoContact()">
+					<img class="img-fluid" ng-src="{{channelDetail.avatar}}">
+				</div>
+				<div class="info-message">
+					<h3 class="nameDetailGroup" ng-if="channelDetail.type_chat == 'group'">
+						{{channelDetail.name}}
+					</h3>
+					<h3 ng-if="channelDetail.type_chat !== 'group'">
+						{{channelDetail.name}}
+					</h3>
+					<div class="block-part" ng-if="channelDetail.type_chat == 'group'">
+						<p class="participants" ng-repeat="partcipantsViews in partcipantsView">
+							{{partcipantsViews}} - 
+						</p>
+					</div>					
+				</div>
+			</div>
+			<!--info message -->
+
+			<!-- header messages - icons -->	
+			<div class="col-md-5 wrapper">
+				<div class="box-icon-menu-message wrapper">
+					<i class="fa fa-video-camera icon-start-video" aria-hidden="true" ng-if="onlineCall" ng-click="startVideoCall('btn')">
+					</i>
+				</div>
+				<div class="box-icon-menu-message wrapper">
+					<i class="fa fa-phone icon-start-call" aria-hidden="true"  ng-if="onlineCall" ng-click="startCall('btn')"></i>
+				</div>
+				<div class="box-icon-menu-message wrapper" ng-if="channelDetail.message_expires > 0">
+					<i class="fa fa-clock-o icon-message-expires" aria-hidden="true"></i>
+				</div>
+				<div class="box-icon-menu-message wrapper">
+					<i id="search" class="fa fa-search icon-search-menu-message" aria-hidden="true"></i>
+				</div>
+				<div class="box-icon-menu-message wrapper" ng-click="openMenuMessage()">
+					<i class="fa fa-ellipsis-v icon-menu-messages" aria-hidden="true"></i>
+				</div>
+			</div>	
+			<!-- header messages - icons -->	
+		</div>		
+		<!-- menu options header messages -->
+		<ul id="menu-message" class="menu-msg animated fadeIn">
+			<li class="item" ng-click="addNewPassword()" ng-if="insertPassword == false">Adicionar senha</li>
+			<li class="item" ng-click="startVideoCall()" ng-if="onlineCall">Iniciar vídeo chamada</li>
+			<li class="item" ng-click="startCall()" ng-if="onlineCall">Ligar</li>
+			<li class="item" ng-click="removePassword()" ng-if="insertPassword">Remover senha</li>
+			<li class="item" ng-click="clearChannel()">Limpar conversa</li> 
+			<li class="item" ng-click="deleteChannel()">Excluir chat</li> 
+			<li class="item" ng-click="optionsMsg()">Apagar mensagens</li> 
+			<li class="item" ng-click="openDetailChannel()">Administrar Conversa</li>
+		</ul>   
+		<!-- menu options header messages --> 	
+	</div>
+	<div class="search-msg">
+		<input id="search-message" class="search-message"  type="text" placeholder="Pesquisar" ng-model="search">
+	</div>
+	<!-- header messages -->
+
+	<!--MODAL VIDEO CHAMADA-->
+	<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+	<!-- Modal -->
+	<div id="modal-calls" class="modal-calls">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- init - Modal content video call-->
+				<div class="modal-content modal-content-calls" ng-if="channelDetail.stream_type == 'video' && channelDetail.stream_type != ''">
+					<!-- header modal Do video call -->
+					<div class="modal-header modal-header-calls wrapper" ng-if="channelDetail.stream_type == 'video' && call.accepted == false && call.init == true">
+						<h4 class="title-modal-calls">
+							Efetuando chamada de vídeo para {{channelDetail.name}}...
+						</h4>
+					</div>
+					<div class="modal-header modal-header-calls wrapper" ng-if="channelDetail.stream_type == 'video' && call.accepted == false && call.init == false">
+						<h4 class="title-modal-calls">
+							Recebendo chamada de vídeo de {{channelDetail.name}}...
+						</h4>
+					</div>
+					<!-- header modal Do video call -->
+
+					<!-- body call video -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="modal-body modal-body-calls-video">
+								<div id="calls">
+									<div class="box-call-video">
+										<!-- <audio id="audio-call" src="sound/sound_call.mp3"></audio> -->
+										<div id="remote-call"></div>
+						                <div class="row-btn-end-call wrapper">
+								            <div class="box-icon-end-call-video wrapper" ng-click="endCall()" 
+								            ng-if="channelDetail.stream_type == 'video' && ((call.accepted == false && call.init == true) || (call.accepted == true && call.init == true))">
+												<i class="icon-end-call-video fa fa-phone" aria-hidden="true"></i>	
+											</div>
+											<div class="box-icon-end-call-video wrapper" ng-click="endCall('true')"
+											ng-if="channelDetail.stream_type == 'video' && call.accepted == false && call.init == false">
+							        			<i class="fa fa-phone icon-end-call-video" aria-hidden="false"></i>	
+							        		</div>
+							        		<div class="box-icon-accept-call-video wrapper" ng-click="receivedCall('video')"
+							        		 ng-if="channelDetail.stream_type == 'video' && call.accepted == false && call.init == false">
+							        			<i class="fa fa-video-camera icon-accept-call-video" aria-hidden="true"></i>	
+							        		</div>	
+							            </div>
+						                <div id="local-call"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- body call video -->
+				</div>
+				<!-- init - Modal content video call-->
+
+				<!-- init - Modal content call-->
+				<div class="modal-content modal-content-calls" ng-if="channelDetail.stream_type == 'call' && channelDetail.stream_type != ''">
+					<!-- body Do call -->
+					<div class="modal-body modal-body-calls-call">
+						<div class="row">
+							<div class="col-md-12">
+								<!-- header call -->
+								<div class="modal-header modal-header-calls wrapper" ng-if="channelDetail.stream_type == 'call' && call.accepted == false && call.init == true">
+									<h4 class="title-modal-calls">
+										Ligando para {{channelDetail.name}}...
+									</h4>
+								</div>
+								<div class="modal-header modal-header-calls wrapper" ng-if="channelDetail.stream_type == 'call' && call.accepted == false && call.init == false">
+									<h4 class="title-modal-calls">
+										Recebendo chamada de audio de {{channelDetail.name}}...
+									</h4>
+								</div>
+								<div class="modal-header modal-header-calls wrapper" ng-if="channelDetail.stream_type == 'call' && call.accepted == true && call.init == true">
+									<h4 class="title-modal-calls">
+										Chamada de áudio com {{channelDetail.name}} em andamento...
+									</h4>
+								</div>
+								<!-- header call -->
+
+								<!-- box avatar call -->
+								<div class="do-call" ng-if="channelDetail.stream_type == 'call' && call.accepted == false "><!-- && call.init == true-->
+									<div class="box-avatar-call">
+						            	<img class="img-avatar-call" ng-if="channelDetail.avatar != '' && channelDetail.avatar != null" ng-src="{{channelDetail.avatar}}">
+						            	<img class="img-avatar-call" ng-if="channelDetail.avatar == '' || channelDetail.avatar == null" src="./assets/img/contact-default.png">
+						            </div>
+						        </div>
+						        <!-- <div class="received-call" ng-if="channelDetail.stream_type == 'call' && call.accepted == false && call.init == false">
+									<div class="box-avatar-call">
+						            	<img class="img-avatar-call" ng-src="{{channelDetail.avatar}}">
+						            </div>
+						        </div> -->
+						        <!-- box avatar call -->
+
+						        <!-- box accept/reject call and call -->
+						        <div class="box-btns-call wrapper">
+						        	<div class="box-do-call wrapper" ng-if="channelDetail.stream_type == 'call' && ((call.accepted == false && call.init == true) || (call.accepted == true && call.init == true))">
+						        		<div class="box-icon-end-call wrapper" ng-click="endCall()">
+						        			<i class="fa fa-phone icon-end-call" aria-hidden="true"></i>	
+						        		</div>
+						        	</div>
+						        	<div class="box-received-call" ng-if="channelDetail.stream_type == 'call' && call.accepted == false && call.init == false">
+						        		<div class="box-icon-end-call wrapper" ng-click="endCall(true)">
+						        			<i class="fa fa-phone icon-end-call" aria-hidden="true"></i>	
+						        		</div>
+						        		<div class="box-icon-accept-call wrapper" ng-click="receivedCall('call')">
+						        			<i class="fa fa-phone icon-accept-call" aria-hidden="true"></i>	
+						        		</div>		
+						        	</div>
+								</div>
+								<!-- box accept/reject call and call -->
+							</div>
+						</div>
+					</div>
+					<!-- body Do call -->
+				</div>
+				<!-- end - Modal content call-->
+			</div>
+		</div>
+	</div>
+	<!--MODAL VIDEO CHAMADA-->
+
+	<!-- top bar message -->
+	<div class="options-msg animated fadeIn" ng-if="optionsMsgHeader">
+		<div class="container">
+			<div class="row box-options">
+				<div class="col-md-2">
+					<i class="fa fa-times icons-top close-option" aria-hidden="true" ng-click="closeOptions()"></i>
+					<div class="number animated fadeInDown">						
+						<span class="number-selecteds">
+							{{numberMessageSelected}}
+						</span>	
+					</div>
+				</div>
+				<div class="col-md-10">
+					<div class="number exclude-msg animated fadeInDown" ng-click="excludeMsgs()">
+						<i class="fa fa-2 fa-trash-o fa-2x">							
+						</i>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="messages-all">	
+		<div ng-repeat="(key, value) in messages | groupBy: 'dateLabel'">
+		    <div class="item item-divider">
+		       	<p>{{value[0].dateLabel}}</p>
+		    </div>		
+			<div class="row" ng-repeat="message in value | filter:search track by $index " >
+				<div class="col-md-12">
+					<div class="chat" ng-class="{right:message.user_id == me.id}">
+						<!--<div class="img-message">
+								<img src="assets/img/avatar.jpg" class="img-fluid" alt="">
+							</div> -->
+						<span class="checked animated fadeIn" ng-class="{checkedOrange: message.selected}" ng-if="optionsMsgHeader" ng-click="seletedMessage(message)">
+							<i class="fa fa-check animated fadeIn" ng-if="message.selected == true" aria-hidden="true"></i>
+						</span>
+						<div class="message" ng-click="seletedMessage(message)" ng-class="{'mg-left': optionsMsgHeader}">
+							<p ng-if="channelDetail.type_chat == 'group'" class="name-chat">
+								{{message.owner}}
+							</p>
+							<p ng-bind-html="message.message | emoticons"></p> <!-- {{message.message}} -->
+							<div style="margin:5px;" ng-show="message.type == 'file'">
+								<div class="progress" ng-show="message.progress > 0 && message.open == false">
+									<div class="progress-bar progress-bar-striped" role="progressbar" ng-style="{width: message.progress + 'px'}" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+										{{message.progress}}%
+									</div>
+								</div>							
+							</div>
+							<div class="preview" ng-if="message.type == 'image'" style="margin:10px;">
+								<a target="_blank" ng-href="{{message.upload}}">
+									<img ng-src="{{message.thumbnail}}">
+								</a>
+							</div>
+							<div ng-show="message.open == true && message.type != 'audio'">
+								<button class="btn btn-danger btn-download" ng-if="message.type != 'image'">
+									<a target="_blank" ng-href="{{message.upload}}">
+										Abrir
+									</a>
+								</button>
+							</div>
+							<sound-manager></sound-manager>
+							<div ng-show="message.type == 'audio'">
+								<audio controls="" name="media" ng-if="message.open">
+									<source ng-src="{{message.upload}}" type="audio/mp3">
+								</audio>
+								<div class="progress" ng-show="message.progress > 0 ">
+									<div class="progress-bar progress-bar-striped" role="progressbar" ng-style="{width: message.progress + 'px'}" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+										{{message.progress}}%
+									</div>
+								</div>									
+							</div>
+							<p class="hour-message text-right" style="margin-top:2px;">
+								{{message.created_at | amUtc | amDateFormat:'HH:mm'}}<br/>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="footer" ng-class="{'footer-bottom' : stateGalery == true}">
+		<div class="footer wrapper">
+			<div class="box-anexo box-camera text-center">
+				<div class="icons-chat">
+					<!--<i class="fa fa-2 fa-camera" aria-hidden="true"></i>-->
+					<i class="fa fa-2 fa-paperclip" ngf-select="sendFile($file)" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="box-text" ng-class="boxTimer ? 'box-text' : 'new-box-text'">
+				<form>
+					<textarea id="textarea" class="text-message" rows="1" placeholder="Digite uma mensagem" ng-enter="sendMessage()" data-ng-model="listMessages" ng-style="myStyle"></textarea> 
+				</form>
+				<!-- emoji-input="{buttonLabel:'<i class=\'btn-emoticons fa fa-smile-o\'></i>', wysiwyg:true}" -->
+				<!-- ng-keyup="showSend(); autosize()" -->
+			</div>
+			<div class="box-icons" ng-hide="audioRecord">
+				<div class="icon-send" ng-show="iconSend">
+					<i class="fa fa-2 fa-arrow-right" aria-hidden="true" ng-click="sendMessage()"></i>
+				</div>
+				<div class="icon-mic" ng-show="iconAudio">
+					<i class="fa fa-microphone" aria-hidden="true" ng-click="changeAudio()"></i>
+				</div>
+			</div>	
+			<div class="box-timer" ng-show="audioRecord" ng-class="boxTimer ? 'box-timer' : 'new-box-timer'">
+				<div class="box-record-audio text-center">
+					<div class="box-icon">
+						<i class="fa fa-times icon-cancel" aria-hidden="true" ng-click="stopAll()"></i>
+					</div>
+					<div class="box-icon">
+						<div class="box-icon circle">
+							<i id="audioRecord" class="fa fa-circle icon-record" aria-hidden="true" ng-click="audioRecordMessage()"></i>
+						</div>
+						<div class="box-icon">
+							<span>
+								<timer interval="1000">
+									{{minutes}}:{{sseconds}}
+								</timer>
+							</span>
+						</div>
+					</div>
+					<div class="box-icon" ng-click="stopRecording()">
+						<i class="fa fa-check icon-check" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</section>
+<script src="../src/componentes/jquery-emojiarea-master/jquery.emojiarea.js"></script>
+<script src="../src/componentes/jquery-emojiarea-master/packs/basic/emojis.js"></script>

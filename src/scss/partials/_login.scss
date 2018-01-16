@@ -1,0 +1,46 @@
+.login {
+	max-width: 400px;
+	margin: 0 auto;
+	h2{
+		@include h2Default;
+	}
+	label{
+		text-align: left;
+		color:#9ab1ca;
+		font-size: 15px;
+	}
+	p{
+		color:$color2;
+		display: inline-block;
+	}
+	input{		
+		@include inputDefault;
+		background-color: #3a4450;
+		color: #fff;
+	}
+	.button-enter{
+		@include button;
+		margin: 0;
+	}
+	a{
+		font-size: 30px;
+		text-transform: uppercase;
+		color: $color!important;
+	}
+	img{
+		width: 25%;
+		text-align: center;
+		margin: 90px 0 200px 0;
+	}
+	.error-password{
+	    color: #ff8c00;
+	    font-size: 15px;
+	    font-weight: 400;
+	    display: block;
+	    position: relative;
+	    top: -58px;
+	}
+	.text-md-right{
+		cursor: pointer;
+	}
+}

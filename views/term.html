@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="term">	
+        <div class="row">	
+            <div class="col-md-12">	
+                <h2 class="text-md-center term-title">Termos de uso do LockerApp</h2>
+                <p>		
+                <ng-bind-html ng-bind-html="return.data.term"></ng-bind-html>
+                </p>
+            </div>
+        </div>
+        <div class="buttons">	
+            <div class="row">                
+            </div>
+        </div>	
+	</div>	
+</div>
+<style>	
+	.term{
+		background:white;
+		min-height:600px;
+		padding:20px;
+		position:relative;
+		margin-top:5vh;
+		border-radius:5px;
+		-webkit-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+		-moz-box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+		box-shadow: 10px 10px 35px -10px rgba(0,0,0,0.55);
+	}
+
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+	.term h1, .term h2{
+		font-size:1.2em;
+	}
+	.term-title{
+		color:#ff531a;
+		font-weight:bold;
+		margin:3vh;
+	}
+
+	.buttons{
+		position:center;
+		bottom:0px;
+		width:100%;
+		padding:10px;
+	}
+
+    body{
+        overflow: auto;
+    }
+
+	button{
+		color:white;
+		margin:0 auto;
+	}
+	.btn-aceito{
+		background-color:#ff531a;		
+	}
+	@media(max-width: 500px){
+		.container{
+			padding: 2vw!important;
+		}
+	}
+</style>

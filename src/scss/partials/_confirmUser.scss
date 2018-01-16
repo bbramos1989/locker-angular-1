@@ -1,0 +1,45 @@
+.box-recover{
+	margin: 0 auto; 	
+ 	h1{
+ 		margin-top: 10%;
+ 		text-align: center;
+ 		color: #fff;
+ 		font-size: 2.1em;
+ 		margin-bottom: 30px;
+ 		color: $color;
+ 	}
+ 	.recover-form{ 		
+ 		padding: 40px;
+ 		max-width:650px;
+ 		width:60%;
+ 		text-align: center;
+ 		margin:0 auto; 		
+ 		background-color: #fff;
+
+ 		input{
+ 			width:100%!important;
+ 			max-width:400px;
+ 			padding:10px;
+ 			border-radius:5px;
+ 			border:1px solid #d4d4d4;
+ 			margin:0 auto;
+
+ 		}
+ 			
+		button{ 		
+			width: 110px;
+		    border: none;
+		    border-radius: 5px;
+		    background-color: #ff531a;
+		    margin: 10px 10px 0px 0;
+		    color: #fff;
+		    text-transform: uppercase;
+		    font-size: 15px;
+		    padding: 10px;
+		    cursor: pointer;
+			    &:hover{
+			    	background-color: #c0370e;
+			    }				
+	 	}
+ 	}
+}
